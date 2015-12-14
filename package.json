@@ -6,8 +6,8 @@
     "url": "https://github.com/freecodecamp/freecodecamp.git"
   },
   "scripts": {
-    "first-time": "npm run create-rev && echo '\n\nseeding database\n\n' && node seed && node seed/nonprofits",
-    "create-rev": "test ! -e server/rev-manifest.json && echo '\n\ncreating manifest\n\n' && touch server/rev-manifest.json && echo '{}' >> server/rev-manifest.json",
+    "only-once": "npm run create-rev && echo '\n\nseeding database\n\n' && node seed && node seed/nonprofits && ech",
+    "create-rev": "node -e \"console.log('\\n\\ncreating manifest\\n\\n'); require('fs').writeFileSync('server/rev-manifest.json', '{}');\"",
     "build": "NODE_ENV=production gulp build -p",
     "start": "babel-node server/server.js",
     "prestart-production": "bower cache clean && bower install && gulp build -p",
@@ -77,7 +77,7 @@
     "gulp-webpack": "^1.5.0",
     "helmet": "~0.15.0",
     "helmet-csp": "~0.3.0",
-    "history": "^1.9.0",
+    "history": "~1.13.0",
     "jade": "^1.11.0",
     "json-loader": "~0.5.2",
     "less": "^2.5.1",
